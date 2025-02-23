@@ -1,0 +1,44 @@
+using System;
+using System.Collections.Generic;
+
+class Library
+{
+    private List<Book> books = new List<Book>
+    {
+        new Book("C# Programming Basics", "John Doe", 2021),
+        new Book("Introduction to Databases", "Jane Smith", 2019),
+        new Book("Design Patterns in C#", "Robert Martin", 2020)
+    };
+
+    public void ViewBookList()
+    {
+        Console.WriteLine("Book List:");
+        foreach (var book in books)
+        {
+            Console.WriteLine($"- {book.Title} by {book.Author} ({book.Year})");
+        }
+    }
+}
+
+class Book
+{
+    public string Title { get; set; }
+    public string Author { get; set; }
+    public int Year { get; set; }
+    
+    public Book(string title, string author, int year)
+    {
+        Title = title;
+        Author = author;
+        Year = year;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Library library = new Library();
+        library.ViewBookList();
+    }
+}
