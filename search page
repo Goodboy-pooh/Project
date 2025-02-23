@@ -1,0 +1,57 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class Library
+{
+    private List<Book> books = new List<Book>
+    {
+        new Book("C# Programming Basics", "John Doe", 2021),
+        new Book("Introduction to Databases", "Jane Smith", 2019),
+        new Book("Design Patterns in C#", "Robert Martin", 2020)
+    };
+
+    public void SearchBook(string query)
+    {
+        var results = books.Where(b => b.Title.Contains(query, StringComparison.OrdinalIgnoreCase) ||
+                                       b.Author.Contains(query, StringComparison.OrdinalIgnoreCase)).ToList();
+        
+        if (results.Count > 0)
+        {
+            Console.WriteLine("Search Results:");
+            foreach (var book in results)
+            {
+                Console.WriteLine($"- {book.Title} by {book.Author} ({book.Year})");
+            }
+        }
+        else
+        {
+            Console.WriteLine("No books found matching your search.");
+        }
+    }
+}
+
+class Book
+{
+    public string Title { get; set; }
+    public string Author { get; set; }
+    public int Year { get; set; }
+    
+    public Book(string title, string author, int year)
+    {
+        Title = title;
+        Author = author;
+        Year = year;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Library library = new Library();
+        Console.Write("Enter a book title or author to search: ");
+        string query = Console.ReadLine();
+        library.SearchBook(query);
+    }
+}

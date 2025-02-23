@@ -1,9 +1,33 @@
 using System;
+using System.Collections.Generic;
+
+class Book
+{
+    public string Title { get; set; }
+    public string Author { get; set; }
+    public int Year { get; set; }
+    
+    public Book(string title, string author, int year)
+    {
+        Title = title;
+        Author = author;
+        Year = year;
+    }
+
+    public void DisplayDetails()
+    {
+        Console.WriteLine("Book Details:");
+        Console.WriteLine($"Title: {Title}");
+        Console.WriteLine($"Author: {Author}");
+        Console.WriteLine($"Year: {Year}");
+    }
+}
 
 class Program
 {
-    static void Main(string[] args)
+    static void Main()
     {
-        Console.WriteLine("Hello, World!");
+        Book book = new Book("C# Programming Basics", "John Doe", 2021);
+        book.DisplayDetails();
     }
 }

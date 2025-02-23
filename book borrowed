@@ -1,0 +1,30 @@
+using System;
+using System.Collections.Generic;
+
+class Library
+{
+    private List<string> borrowedBooks = new List<string>
+    {
+        "C# Programming Basics",
+        "Introduction to Databases",
+        "Design Patterns in C#"
+    };
+
+    public void ViewBorrowedBooks()
+    {
+        Console.WriteLine("Borrowed Books:");
+        foreach (var book in borrowedBooks)
+        {
+            Console.WriteLine("- " + book);
+        }
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Library library = new Library();
+        library.ViewBorrowedBooks();
+    }
+}
